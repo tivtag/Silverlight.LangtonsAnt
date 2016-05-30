@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="Ant.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    Width="Auto" Height="Auto">
+    <UserControl.Resources>
+        <SolidColorBrush Color="White" x:Name="brushA"/>
+        <SolidColorBrush Color="Black" x:Name="brushB"/>
+    </UserControl.Resources>
+
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
+        <Grid Background="Gray">       
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
+                <Button x:Name="buttonStart" Content="Start" ToolTipService.ToolTip="Start the Cellular Automaton!" Click="OnStartButtonClicked" Width="50" />
+                <Button x:Name="buttonPause" Content="Pause" ToolTipService.ToolTip="Pauses the simulation." Click="OnPauseButtonClicked" Width="50" />                
+                <Button x:Name="buttonFill" Content="Fill" ToolTipService.ToolTip="Randomly fills the ant field with black cells." Click="OnFillButtonClicked" Width="50" Margin="20,0,0,0"/>
+                <Button x:Name="buttonReset" Content="Reset" ToolTipService.ToolTip="Resets the simulation." Click="OnResetButtonClicked" Width="50" />
+                
+                <TextBlock Text="Speed:" ToolTipService.ToolTip="The speed of the simulation." Margin="20,3,0,0" FontSize="15" Foreground="White"/>
+                <Slider x:Name="sliderSpeed" ValueChanged="OnSliderSpeedValueChanged" ToolTipService.ToolTip="Changes the speed of the simulation."
+                        Minimum="0.0" Maximum="2.0" Width="100.0" Margin="6,1,0,0" IsDirectionReversed="True" />
+                <TextBlock x:Name="textBoxStep" ToolTipService.ToolTip="The number of simulation steps."                          
+                           Margin="20,3,0,0" Padding="0" Text="Step: 0"
+                           FontSize="15" Foreground="White" /> 
+                  
+            </StackPanel>
+            <HyperlinkButton Foreground="LightGray" Content="paul.ennemoser.com" NavigateUri="http://paul.ennemoser.com" 
+                                Margin="2,0,2,0" IsTabStop="False" Grid.Row="1" Grid.Column="1"
+                                VerticalContentAlignment="Center" HorizontalContentAlignment="Right"
+                                HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+            <Grid x:Name="antGrid" Grid.Row="2" Grid.Column="1"/>
+        </Grid>
+    </ScrollViewer>
+</UserControl>
